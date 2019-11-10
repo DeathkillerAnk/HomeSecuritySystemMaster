@@ -1,0 +1,20 @@
+<% include partials/header %>
+<link rel="stylesheet" href="/style/app.css">
+<form action="/train" method="POST">
+  <input type="text" name="name" placeholder="name">
+  <button>train</button>
+</form>
+
+<form action="/startRecoding" method="POST">
+  <button>Start Recording</button>
+</form>
+
+<form action="/delete" method="POST">
+  <button>Delete Captured Data</button>
+</form>
+
+<form action="/startSurveillance" method="POST">
+  <button>Start Surveillance</button>
+</form>
+
+<% include partials/footer %>
