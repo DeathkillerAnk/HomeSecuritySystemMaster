@@ -13,17 +13,82 @@ app.get("/home",function(req,res){
 
 app.post("/train",function(req,res){
     console.log(req.body.name);
-        // var spawn = require("child_process").spawn; 
-        // var process = spawn('python',["./hello.py"]);
-        // process.stdout.on('data', function(data) { 
-        //     console.log(data.toString());
+        var client = new net.Socket();
+        client.connect(8005, '127.0.0.1', function() {
+        	console.log('Connected');
+        	client.write('{"rpc":"startRecording","args":['+req.body.name+']');
+        });
 
-        //     res.write(data.toString()); 
-        //     res.end('end');
+        client.on('data', function(data) {
+        	console.log('Received: ' + data);
+        	client.destroy(); // kill client after server's response
+        });
 
-        // } )
+        client.on('close', function() {
+        	console.log('Connection closed');
+        });
     res.redirect("/home");
 });
+
+
+app.post("/startRecoding",function(req,res){
+    // console.log(req.body.name);
+        var client = new net.Socket();
+        client.connect(8005, '127.0.0.1', function() {
+        	console.log('Connected');
+        	client.write('{"rpc":"startLearning","args":[]');
+        });
+
+        client.on('data', function(data) {
+        	console.log('Received: ' + data);
+        	client.destroy(); // kill client after server's response
+        });
+
+        client.on('close', function() {
+        	console.log('Connection closed');
+        });
+    res.redirect("/home");
+});
+
+
+app.post("/delete",function(req,res){
+    // console.log(req.body.name);
+        var client = new net.Socket();
+        client.connect(8005, '127.0.0.1', function() {
+        	console.log('Connected');
+        	client.write('{"rpc":"deleteCapturedData","args":[]');
+        });
+
+        client.on('data', function(data) {
+        	console.log('Received: ' + data);
+        	client.destroy(); // kill client after server's response
+        });
+
+        client.on('close', function() {
+        	console.log('Connection closed');
+        });
+    res.redirect("/home");
+});
+
+app.post("/delete",function(req,res){
+    // console.log(req.body.name);
+        var client = new net.Socket();
+        client.connect(8005, '127.0.0.1', function() {
+        	console.log('Connected');
+        	client.write('{"rpc":"startSurveillance","args":[]');
+        });
+
+        client.on('data', function(data) {
+        	console.log('Received: ' + data);
+        	client.destroy(); // kill client after server's response
+        });
+
+        client.on('close', function() {
+        	console.log('Connection closed');
+        });
+    res.redirect("/home");
+});
+
 
 // var client = new net.Socket();
 // client.connect(8005, '127.0.0.1', function() {

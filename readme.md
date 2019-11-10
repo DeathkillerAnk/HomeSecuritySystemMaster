@@ -1,0 +1,2 @@
+#A Digital Smart Door Lock Application. 
+###Scanned image are automatically captured through camera for identification. If image matches the authorized person then it sends high signal(open) to door & it will be unlocked. Portal’s backend is made using node.js and AI part will be implemented in python.
